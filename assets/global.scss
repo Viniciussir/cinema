@@ -1,0 +1,69 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  background: #590a0a;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  width: 50vw;
+  height: 55vh;
+  background: #fff;
+}
+
+body {
+  margin: 0px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex .logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 55vh;
+  background-color: #000000;
+  color: white;
+}
+
+.logo-img{
+  height: auto;
+  margin:0;  
+  width: 100%;
+}
+
+.flex .login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  height: 55vh;
+  background-color: #fdfdfd;
+}
+
+.flex .login .forms{
+  flex-direction: column;
+  justify-content: right;
+}
+
+.margintop {
+  margin-top: 5vh;
+}
+
+.button {
+  background-color: #000000;
+  border-radius: 5px;
+  padding: 2vh 12vh;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  color: #fffefe;
+}
