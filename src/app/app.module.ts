@@ -13,12 +13,14 @@ import {ButtonModule} from 'primeng/button';
 import {SplitterModule} from 'primeng/splitter';
 import { InputTextModule } from 'primeng/inputtext';
 import { SigninComponent } from './signin/signin.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SigninComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
