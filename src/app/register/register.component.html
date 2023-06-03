@@ -1,1 +1,140 @@
-<p>register works!</p>
+<div class="container" *ngIf="operacao =='register'">
+  <div class="row">
+    
+    <div class="titleCinema">
+      <label>Dados Gerais do Cinema</label>
+    </div>
+   
+    <div class="flex">
+      
+      <div class="col-lg-4 box-comp">
+        <span class="p-float-label">
+          <input type="text" id="inputtext" pInputText> 
+          <label for="inputtext">Nome</label>
+        </span>
+      </div>
+
+      <div class="col-lg-4 box-comp">
+        <span class="p-float-label">
+          <input type="text" id="inputtext" pInputText> 
+          <label for="inputtext">Nome Fantasia</label>
+        </span>
+      </div>
+
+      <div  class="col-lg-4 box-comp">
+        <span class="p-float-label">
+          <p-inputMask
+            inputId="inputmask"
+            mask="999.999.999-99"
+            [(ngModel)]="value5"
+          ></p-inputMask>
+          <label for="inputmask">CNPJ</label>
+        </span>
+      </div>
+      
+    </div>
+
+    <div class="titleCinema">
+      <label>Endereço</label>
+    </div>
+
+    <div class="flex">
+
+      <div class="col-lg-4 box-comp">
+        <span class="p-float-label">
+          <input type="text" id="inputtext" pInputText> 
+          <label for="inputtext">Logradouro</label>
+        </span>
+      </div>
+
+      <div class="col-lg-4 box-comp">
+        <span class="p-float-label">
+          <p-inputNumber p-inputNumber inputId="inputnumber"></p-inputNumber>
+          <label for="inputnumber">Numero</label>
+        </span>
+      </div>
+
+      
+      <div class="col-lg-4 box-comp">
+        <span class="p-float-label">
+          <input type="text" id="inputtext" pInputText> 
+          <label for="inputtext">Bairro</label>
+        </span>
+      </div>
+
+      <div class="col-lg-4 box-comp">
+        <span class="p-float-label">
+          <input type="text" id="inputtext" pInputText> 
+          <label for="inputtext">Complemento</label>
+        </span>
+      </div> 
+
+    </div>
+
+    <div class="flex">
+
+      <div class="col-lg-4 box-comp">
+        <span class="p-float-label">
+          <input type="text" id="inputtext" pInputText> 
+          <label for="inputtext">Cidade</label>
+        </span>
+      </div>
+  
+      <div class="col-lg-4 box-comp">
+        <span class="p-float-label">
+          <input type="text" id="inputtext" pInputText> 
+          <label for="inputtext">UF</label>
+        </span>
+      </div>
+  
+      <div  class="col-lg-4 box-comp">
+        <span class="p-float-label">
+          <p-inputMask
+            inputId="inputmask"
+            mask="99999-999"
+            [(ngModel)]="value5"
+          ></p-inputMask>
+          <label for="inputmask">CEP</label>
+        </span>
+      </div>
+
+    </div>
+
+    <div class="titleCinema">
+      <label>Login</label>
+    </div>
+
+    <div class="flex">
+
+      <div class="col-lg-4 box-comp">
+        <span class="p-float-label">
+          <input type="text" id="inputtext" pInputText> 
+          <label for="inputtext">Usuario</label>
+        </span>
+      </div>
+
+      <div class="col-lg-4 box-comp">
+        <span class="p-float-label">
+          <p-password [toggleMask]="true"></p-password> 
+          <label for="inputtext">Senha</label>
+        </span>
+      </div>
+
+    </div>
+
+    <div class="flex">
+      <div class="button-Cadastro">
+        <input (click)="verificaDadosCadastrarCinema()"value="Cadastrar">
+      </div>
+  
+      <div class="button-Voltar">
+        <input (click)="voltar()"value="Voltar">
+      </div>
+    </div>
+    
+  </div>  
+</div>
+
+<app-signin
+ *ngIf="operacao =='sigin'">
+</app-signin>

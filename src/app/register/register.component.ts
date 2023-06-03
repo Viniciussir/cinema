@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Operacao } from '../shared/operacao';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
+  operacao:any = '';
+
+  value5: any;
+
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.operacao = Operacao.REGISTER;
+  }
+
+  verificaDadosCadastrarCinema(){
+    alert('Verificando')
+  }
+
+  voltar(){
+    this.operacao = Operacao.SIGIN;
   }
 
 }

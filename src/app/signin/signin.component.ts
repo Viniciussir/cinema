@@ -1,3 +1,4 @@
+import { Operacao } from './../shared/operacao';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SigninComponent implements OnInit {
 
+  operacao:any = '';
+  usuario:any;
+  senha:any;
+
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.operacao = Operacao.SIGIN;
   }
+
+  inscreva() {
+    this.operacao = Operacao.REGISTER;
+  }
+
+  validarLogin(){
+    alert('Entrar')
+  }
+
 
 }
