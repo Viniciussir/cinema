@@ -25,8 +25,9 @@ import { CascadeSelectModule } from 'primeng/cascadeselect';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import {PasswordModule} from 'primeng/password';
-
-
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import {RippleModule} from 'primeng/ripple';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,9 @@ import {PasswordModule} from 'primeng/password';
     InputTextModule,
     CalendarModule,
     PasswordModule,
+    MessagesModule,
+    MessageModule,
+    RippleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

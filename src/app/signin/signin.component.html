@@ -7,23 +7,30 @@
 
       <div class="login">
 
-        <span class="form-group p-float-label ">
-          <input id="float-input" type="text" [(ngModel)]="usuario" pInputText/>
-          <label for="float-input">Usuário</label>
-        </span>
-
-        <span class="form-group p-float-label ">
-          <input id="float-input" type="text" [(ngModel)]="senha" pInputText/>
-          <label for="float-input">Senha</label>
-        </span>
-
-        <span class="form-group">
-          <input class="button-entrar" value="Entrar">
-        </span>
-
-        <span class="form-group">
-          <label (click)="inscreva()">Inscreva-se gratuitamente!</label>
-        </span>
+        <div>
+          <div class="form-group ">
+            <span class="p-float-label">
+              <input class="width" id="float-input" type="text" [(ngModel)]="usuario" pInputText/>
+              <label for="float-input">Usuário</label>
+            </span>
+          </div>
+          
+          <div class="form-group">
+            <span class="p-float-label">
+              <input class="width" id="float-input" type="text" [(ngModel)]="senha" pInputText/>
+              <label for="float-input">Senha</label>
+            </span>
+          </div>
+  
+          <div class="form-group">
+            <input class="button-entrar" value="Entrar">
+          </div>
+  
+          <div class="form-group inscreva">
+            <label (click)="inscreva()">Inscreva-se gratuitamente!</label>
+          </div>
+        </div>
+   
       </div>
     </div>
   </div>

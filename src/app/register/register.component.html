@@ -1,34 +1,37 @@
 <div class="container" *ngIf="operacao =='register'">
   <div class="row">
+
+    <p-messages [(value)]="msgs2" [enableService]="false"></p-messages>
     
     <div class="titleCinema">
-      <label>Dados Gerais do Cinema</label>
+      <label>Dados do Cadastro</label>
     </div>
    
     <div class="flex">
       
       <div class="col-lg-4 box-comp">
         <span class="p-float-label">
-          <input type="text" id="inputtext" pInputText> 
-          <label for="inputtext">Nome</label>
+          <input class="width" type="text" [(ngModel)]="register.nome" id="inputtext" pInputText> 
+          <label class="width" for="inputtext">Nome</label>
         </span>
       </div>
 
       <div class="col-lg-4 box-comp">
         <span class="p-float-label">
-          <input type="text" id="inputtext" pInputText> 
-          <label for="inputtext">Nome Fantasia</label>
+          <input class="width" type="text" [(ngModel)]="register.nomeFantasia" id="inputtext" pInputText> 
+          <label class="width" for="inputtext">Nome Fantasia</label>
         </span>
       </div>
 
       <div  class="col-lg-4 box-comp">
         <span class="p-float-label">
           <p-inputMask
+            class="width"
             inputId="inputmask"
             mask="999.999.999-99"
-            [(ngModel)]="value5"
+            [(ngModel)]="register.cnpj"
           ></p-inputMask>
-          <label for="inputmask">CNPJ</label>
+          <label class="width" for="inputmask">CNPJ</label>
         </span>
       </div>
       
@@ -42,30 +45,30 @@
 
       <div class="col-lg-4 box-comp">
         <span class="p-float-label">
-          <input type="text" id="inputtext" pInputText> 
-          <label for="inputtext">Logradouro</label>
+          <input class="width" type="text" [(ngModel)]="register.logradouro" id="inputtext" pInputText> 
+          <label class="width" for="inputtext">Logradouro</label>
         </span>
       </div>
 
       <div class="col-lg-4 box-comp">
         <span class="p-float-label">
-          <p-inputNumber p-inputNumber inputId="inputnumber"></p-inputNumber>
-          <label for="inputnumber">Numero</label>
+          <p-inputNumber class="width" [(ngModel)]="register.numero" inputId="inputnumber"></p-inputNumber>
+          <label class="width" for="inputnumber">Numero</label>
         </span>
       </div>
 
       
       <div class="col-lg-4 box-comp">
         <span class="p-float-label">
-          <input type="text" id="inputtext" pInputText> 
-          <label for="inputtext">Bairro</label>
+          <input class="width" type="text" [(ngModel)]="register.bairro" id="inputtext" pInputText> 
+          <label class="width" for="inputtext">Bairro</label>
         </span>
       </div>
 
       <div class="col-lg-4 box-comp">
         <span class="p-float-label">
-          <input type="text" id="inputtext" pInputText> 
-          <label for="inputtext">Complemento</label>
+          <input class="width" type="text" [(ngModel)]="register.complemento" id="inputtext" pInputText> 
+          <label class="width" for="inputtext">Complemento</label>
         </span>
       </div> 
 
@@ -75,24 +78,25 @@
 
       <div class="col-lg-4 box-comp">
         <span class="p-float-label">
-          <input type="text" id="inputtext" pInputText> 
-          <label for="inputtext">Cidade</label>
+          <input class="width" type="text" [(ngModel)]="register.cidade" id="inputtext" pInputText> 
+          <label class="width" for="inputtext">Cidade</label>
         </span>
       </div>
   
       <div class="col-lg-4 box-comp">
         <span class="p-float-label">
-          <input type="text" id="inputtext" pInputText> 
-          <label for="inputtext">UF</label>
+          <input class="width" type="text" [(ngModel)]="register.uf" id="inputtext" pInputText> 
+          <label class="width" for="inputtext">UF</label>
         </span>
       </div>
   
       <div  class="col-lg-4 box-comp">
         <span class="p-float-label">
           <p-inputMask
+          class="width"
             inputId="inputmask"
             mask="99999-999"
-            [(ngModel)]="value5"
+            [(ngModel)]="register.cep"
           ></p-inputMask>
           <label for="inputmask">CEP</label>
         </span>
@@ -108,26 +112,26 @@
 
       <div class="col-lg-4 box-comp">
         <span class="p-float-label">
-          <input type="text" id="inputtext" pInputText> 
-          <label for="inputtext">Usuario</label>
+          <input class="width" type="text" [(ngModel)]="register.usuario" id="inputtext" pInputText> 
+          <label class="width" for="inputtext">Usuario</label>
         </span>
       </div>
 
       <div class="col-lg-4 box-comp">
         <span class="p-float-label">
-          <p-password [toggleMask]="true"></p-password> 
-          <label for="inputtext">Senha</label>
+          <p-password class="width" [(ngModel)]="register.senha" [toggleMask]="true"></p-password> 
+          <label class="width" for="inputtext">Senha</label>
         </span>
       </div>
 
     </div>
 
     <div class="flex">
-      <div class="button-Cadastro">
-        <input (click)="verificaDadosCadastrarCinema()"value="Cadastrar">
+      <div class="col-lg-4 box-comp button-Cadastro">
+        <input (click)="cadastrar()"value="Cadastrar">
       </div>
   
-      <div class="button-Voltar">
+      <div class=" col-lg-4 box-comp button-Voltar">
         <input (click)="voltar()"value="Voltar">
       </div>
     </div>
@@ -138,3 +142,4 @@
 <app-signin
  *ngIf="operacao =='sigin'">
 </app-signin>
+

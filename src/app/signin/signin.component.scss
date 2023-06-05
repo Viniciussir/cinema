@@ -1,0 +1,45 @@
+.box {
+    width: 50vw;
+    height: 55vh;
+    background: #fff;
+}
+
+.flex .login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60vw;
+    height: 55vh;
+    background-color: #fdfdfd;
+  }
+  
+.flex .login .forms{
+    flex-direction: column;
+    justify-content: right;
+}
+
+.form-group {
+    margin-top: 5vh;
+}
+
+.logo-img{
+    height: auto;
+    margin:0;  
+    width: 100%;
+ }
+
+.flex .logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 55vh;
+    background-color: #000000;
+    color: white;
+}
+
+.inscreva{
+   text-align: center;
+}
