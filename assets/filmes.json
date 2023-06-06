@@ -1,0 +1,64 @@
+{
+	"data": [
+		{
+			"id": "1",
+			"tituloFilme": "O Mistério da Mansão",
+			"sinopseFilme": "Um detetive brilhante é chamado para investigar uma série de assassinatos que ocorrem em uma mansão isolada. À medida que ele desvenda os segredos sombrios dos residentes, ele se vê preso em um jogo mortal de gato e rato.",
+			"estreiaFilme": "15/05/2023",
+			"filmeCartaz": "caminho/para/o/cartaz.png",
+			"duracaoFilme": "2h10min",
+			"classificacaoFilme": "16 anos",
+			"generoFilme": "Suspense",
+			"sessaoFilme": "19:30",
+			"artista": "John Smith"
+		}, 
+		{
+			"id": "2",
+			"tituloFilme": "Aventuras no Espaço",
+			"sinopseFilme": "Um grupo de astronautas embarca em uma missão interplanetária para explorar um novo planeta habitável. No entanto, eles se deparam com perigos inimagináveis e devem lutar pela sobrevivência em um ambiente desconhecido.",
+			"estreiaFilme": "08/07/2023",
+			"filmeCartaz": "caminho/para/o/cartaz.png",
+			"duracaoFilme": "2h20min",
+			"classificacaoFilme": "Livre",
+			"generoFilme": "Ficção Científica",
+			"sessaoFilme": "14:00",
+			"artista": "Emily Johnson"
+		}, 
+		{
+			"id": "3",
+			"tituloFilme": "O Tesouro Perdido",
+			"sinopseFilme": "Um grupo de caçadores de tesouros se aventura em uma jornada perigosa para encontrar uma relíquia valiosa perdida há séculos. Eles enfrentam armadilhas mortais e rivais implacáveis enquanto seguem as pistas deixadas por antigos exploradores.",
+			"estreiaFilme": "20/09/2023",
+			"filmeCartaz": "caminho/para/o/cartaz.png",
+			"duracaoFilme": "2h05min",
+			"classificacaoFilme": "12 anos",
+			"generoFilme": "Ação/Aventura",
+			"sessaoFilme": "17:45",
+			"artista": "Sarah Davis"
+		}, 
+		{
+			"id": "4",
+			"tituloFilme": "O Segredo das Sombras",
+			"sinopseFilme": "Uma jovem descobre um diário antigo que revela segredos obscuros sobre sua família. Conforme ela mergulha nas profundezas do mistério, forças sobrenaturais ameaçam consumir sua sanidade.",
+			"estreiaFilme": "05/11/2023",
+			"filmeCartaz": "caminho/para/o/cartaz.png",
+			"duracaoFilme": "1h50min",
+			"classificacaoFilme": "14 anos",
+			"generoFilme": "Suspense/Terror",
+			"sessaoFilme": "21:15",
+			"artista": "Michael Johnson"
+		}, 
+		{
+			"id": "5",
+			"tituloFilme": "O Despertar das Sombras",
+			"sinopseFilme": "Uma jovem descobre poderes sobrenaturais assustadores e se vê envolvida em uma batalha ancestral entre as forças da luz e da escuridão. Ela deve aprender a controlar seu dom e enfrentar seu destino iminente.",
+			"estreiaFilme": "20/06/2024",
+			"filmeCartaz": "caminho/para/o/cartaz.png",
+			"duracaoFilme": "2h05min",
+			"classificacaoFilme": "14 anos",
+			"generoFilme": "Fantasia/Suspense",
+			"sessaoFilme": "21:45",
+			"artista": "Millie Bobby Brown"
+		}
+	]
+}
