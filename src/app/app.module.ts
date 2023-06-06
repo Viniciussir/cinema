@@ -5,8 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {AccordionModule} from 'primeng/accordion';   
-import {MenuItem} from 'primeng/api';                 
+import {AccordionModule} from 'primeng/accordion';             
 import {CardModule} from 'primeng/card';
 import {DividerModule} from 'primeng/divider';
 import {ButtonModule} from 'primeng/button';
@@ -28,12 +27,30 @@ import {PasswordModule} from 'primeng/password';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {RippleModule} from 'primeng/ripple';
+import { MenuComponent } from './menu/menu.component';
+
+import {RouterModule} from '@angular/router';
+import {TableModule} from 'primeng/table';
+import {ToastModule} from 'primeng/toast';
+import {SliderModule} from 'primeng/slider';
+import {ContextMenuModule} from 'primeng/contextmenu';
+import {DialogModule} from 'primeng/dialog';
+import {ProgressBarModule} from 'primeng/progressbar';
+import {FileUploadModule} from 'primeng/fileupload';
+import {ToolbarModule} from 'primeng/toolbar';
+import {RatingModule} from 'primeng/rating';
+import {RadioButtonModule} from 'primeng/radiobutton';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
+import { ProductService } from './menu/servico/menu.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     SigninComponent,
     RegisterComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,8 +77,20 @@ import {RippleModule} from 'primeng/ripple';
     MessagesModule,
     MessageModule,
     RippleModule,
+    TableModule,
+    ToastModule,
+    SliderModule,
+    ContextMenuModule,
+    DialogModule,
+    ProgressBarModule,
+    FileUploadModule,
+    ToolbarModule,
+    RatingModule,
+    RadioButtonModule,
+    ConfirmDialogModule,
+    RouterModule,
   ],
-  providers: [],
+  providers: [ProductService, MessageService, ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,141 @@
+<p-toast></p-toast>
+
+<div class="container" *ngIf="operacao =='menu'">
+    <div class="row">
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                    <button 
+                        pButton pRipple 
+                        label="Novo" 
+                        icon="pi pi-plus" 
+                        class="p-button-success p-mr-2" 
+                        (click)="openNew()">
+                    </button>
+                    <button
+                        style="margin-left: 5px;"
+                        pButton
+                        pRipple
+                        icon="pi pi-trash"
+                        class="p-button-danger"
+                        (click)="deleteSelectedProducts()"
+                        [disabled]="!filmesSelecionado || !filmesSelecionado.length"
+                    ></button>
+                </ng-template>
+
+                <ng-template pTemplate="right">
+                    <button 
+                        pButton pRipple 
+                        label="Voltar" 
+                        icon="pi pi-plus" 
+                        class="p-button-success p-mr-2" 
+                        (click)="voltar()">
+                    </button>
+                </ng-template>
+            </p-toolbar>
+        
+            <p-table 
+                #dt 
+                [value]="filmes" 
+                [rows]="10" 
+                [paginator]="true" 
+                [globalFilterFields]="[
+                    'name',
+                    'country.name',
+                    'representative.name',
+                    'status'
+                ]"
+                [(selection)]="filmesSelecionado" 
+                [rowHover]="true" 
+                dataKey="id"
+                currentPageReportTemplate="Mostrando {first} para {last} de {totalRecords} entradas" 
+                [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        <h5 class="p-m-0">Flmes</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target, 'contains')" placeholder="Search..." />
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                        <th pSortableColumn="tituloFilme">Titulo<p-sortIcon field="tituloFilme"></p-sortIcon></th>
+                        <th pSortableColumn="sinopseFilme">Sinopse<p-sortIcon field="sinopseFilme"></p-sortIcon></th>
+                        <th pSortableColumn="estreiaFilme">Data da Estreia<p-sortIcon field="estreiaFilme"></p-sortIcon></th>
+                        <th pSortableColumn="duracaoFilme">Tempo de Duração<p-sortIcon field="duracaoFilme"></p-sortIcon></th>
+                        <th pSortableColumn="generoFilme">Genero<p-sortIcon field="generoFilme"></p-sortIcon></th>
+                        <th></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-product>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="product"></p-tableCheckbox>
+                        </td>
+                        <td>{{product.tituloFilme}}</td>
+                        <td>{{product.sinopseFilme}}</td>
+                        <td>{{product.estreiaFilme}}</td>
+                        <td>{{product.duracaoFilme}}</td>
+                        <td>{{product.generoFilme}}</td>
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editProduct(product)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteProduct(product)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        No total existem {{filmes ? filmes.length : 0 }} filmes.
+                    </div>
+                </ng-template>
+
+            </p-table>
+        </div>
+    </div>
+</div>
+
+<p-dialog [(visible)]="productDialog" [style]="{width: '800px'}" header="Detalhes do Filme" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="name">Titulo do Filme</label>
+            <input type="text" pInputText id="name" [(ngModel)]="filme.tituloFilme" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !filme.tituloFilme">O Titulo do Filme é obrigatório.</small>
+        </div>
+        <div class="p-field">
+            <label for="description">Sinopse</label>
+            <textarea id="description" pInputTextarea [(ngModel)]="filme.sinopseFilme" required rows="3" cols="20"></textarea>
+            <small class="p-invalid" *ngIf="submitted && !filme.sinopseFilme">A Sinopse é obrigatório.</small>
+        </div>
+        <div class="p-field">
+            <label for="name">Data da Estreia</label>
+            <input type="text" pInputText id="name" [(ngModel)]="filme.estreiaFilme" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !filme.estreiaFilme">A Data da Estreia é obrigatório.</small>
+        </div>
+        <div class="p-field">
+            <label for="name">Tempo de Duração</label>
+            <input type="text" pInputText id="name" [(ngModel)]="filme.duracaoFilme" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !filme.duracaoFilme">O Tempo de Duração é obrigatório.</small>
+        </div>
+        <div class="p-field">
+            <label for="name">Genero</label>
+            <input type="text" pInputText id="name" [(ngModel)]="filme.generoFilme" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !filme.generoFilme">O Genero do Filme é obrigatório.</small>
+        </div>
+    </ng-template>
+    
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Salvar" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
+    </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+
+<app-signin
+ *ngIf="operacao =='sigin'">
+</app-signin>

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Operacao } from '../shared/operacao';
-import { RegisterService } from '../servico/register.service';
-import { Register } from '../servico/register';
-import { RegisterDados } from '../servico/registerdados';
 import {Message} from 'primeng/api';
+import { Register } from './servico/register';
+import { RegisterDados } from './servico/registerdados';
+import { RegisterService } from './servico/register.service';
 
 @Component({
   selector: 'app-register',

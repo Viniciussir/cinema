@@ -23,7 +23,7 @@ export class SigninComponent implements OnInit {
   }
 
   validarLogin(){
-    alert('Entrar')
+  this.operacao = Operacao.MENU;
   }
 
 
