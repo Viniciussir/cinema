@@ -131,7 +131,7 @@ export class RegisterComponent implements OnInit {
   }
 
   selecionarNumero(){
-    if(this.valorNumero){
+    if(this.valorNumero || this.valorNumero === 0){
       this.register.numero = this.valorNumero;
     }else {
       this.register.numero = '';

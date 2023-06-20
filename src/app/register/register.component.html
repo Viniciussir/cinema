@@ -59,7 +59,7 @@
             <p-inputNumber 
               class="width" autocomplete="off" 
               [(ngModel)]="valorNumero" 
-              (onChange)="selecionarNumero()"
+              (ngModelChange)="selecionarNumero()"
               inputId="inputnumber">
             </p-inputNumber>
             <label class="width" for="inputnumber">Numero</label>
