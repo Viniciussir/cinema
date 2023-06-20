@@ -16,11 +16,6 @@ export class RegisterService {
         private http: HttpClient
     ) {}
 
-    gravarDadosCadastro(registerDados:RegisterDados) {
-        return this.http.post("https://api.github.com/repos/OWNER/REPO", 
-        {'oFiltro': JSON.stringify(registerDados)})
-    }
-
     getCidades(estado: string): Observable<any[]> {
         const url = `${this.apiUrl}/estados/${estado}/municipios`;
         return this.http.get<any[]>(url);

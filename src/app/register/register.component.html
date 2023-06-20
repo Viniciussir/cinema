@@ -56,7 +56,12 @@
   
         <div class="col-lg-4 box-comp">
           <span class="p-float-label">
-            <p-inputNumber class="width" autocomplete="off" [(ngModel)]="register.numero" inputId="inputnumber"></p-inputNumber>
+            <p-inputNumber 
+              class="width" autocomplete="off" 
+              [(ngModel)]="valorNumero" 
+              (onChange)="selecionarNumero()"
+              inputId="inputnumber">
+            </p-inputNumber>
             <label class="width" for="inputnumber">Numero</label>
           </span>
         </div>
@@ -74,7 +79,8 @@
             <p-dropdown 
               class="width" 
               [options]="listaRegiao" 
-              [(ngModel)]="register.regiao" 
+              [(ngModel)]="valorRegiao" 
+              (onChange)="selecionarRegiao()"
               optionLabel="name" 
               [showClear]="true" 
               [filter]="true"
@@ -96,7 +102,8 @@
             <p-dropdown 
               class="width" 
               [options]="listaCidade" 
-              [(ngModel)]="register.cidade" 
+              [(ngModel)]="valorCidade" 
+              (onChange)="selecionarCidade()"
               optionLabel="name" 
               [showClear]="true" 
               [filter]="true"

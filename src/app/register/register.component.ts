@@ -20,8 +20,12 @@ export class RegisterComponent implements OnInit {
   msgs2: Message[] = []
 
   listaCidade:any [] = [];
+  valorCidade:any = '';
 
   listaRegiao:any [] = [];
+  valorRegiao:any = '';
+
+  valorNumero:any = 0;
 
   constructor(
     private registerService: RegisterService,
@@ -63,39 +67,21 @@ export class RegisterComponent implements OnInit {
       this.messageService.add({severity:'error', summary: 'Erro', detail: 'Verifique os dados informados.', life: 3000});
       return false
     }
-    this.gravarDados(this.register);
+    this.messageService.add({severity:'success', summary: 'Sucesso', detail: 'O cinema ' + this.register.nome + ' será incluido em breve!', life: 3000});
     return true
   }
 
   validarDados(){
     if(!this.register.nome || !this.register.nomeFantasia || !this.register.cnpj || !this.register.logradouro  || 
       !this.register.numero || !this.register.bairro || !this.register.complemento || !this.register.cidade || 
-      !this.register.uf || !this.register.cep || !this.register.usuario || !this.register.senha){
+      !this.register.uf || !this.register.cep || !this.register.usuario || !this.register.senha || !this.register.regiao){
       return false
     }
     return true;
   }
 
-  gravarDados(register:Register){
-
-    this.registerDados.nome = register.nome;
-    this.registerDados.nomeFantasia = register.nomeFantasia;
-    this.registerDados.cnpj = register.cnpj;
-    this.registerDados.endereco.push({
-      'logradouro': register.logradouro,
-      'numero': register.numero,
-      'bairro': register.bairro,
-      'complemento': register.complemento,
-      'cidade': register.logradouro,
-      'uf': register.uf,
-      'cep': register.cep,
-    })
-      this.registerService.gravarDadosCadastro(this.registerDados).subscribe(data => {
-      console.log(data);
-    })
-  }
-
   voltar(){
+    this.messageService.clear();
     this.operacao = Operacao.SIGIN;
   }
 
@@ -126,6 +112,30 @@ export class RegisterComponent implements OnInit {
         console.error(error);
       }
     );
+  }
+
+  selecionarCidade(){
+    if(this.valorCidade){
+      this.register.cidade = this.valorCidade.name;
+    }else {
+      this.register.cidade = '';
+    }    
+  }
+
+  selecionarRegiao(){
+    if(this.valorRegiao){
+      this.register.regiao = this.valorRegiao.name;
+    }else {
+      this.register.regiao = '';
+    }    
+  }
+
+  selecionarNumero(){
+    if(this.valorNumero){
+      this.register.numero = this.valorNumero;
+    }else {
+      this.register.numero = '';
+    }    
   }
 
 }
