@@ -17,21 +17,6 @@ body {
   display: flex;
 }
 
-.button-entrar {
-  background-color: #000000;
-  color: #fffefe;
-  border-radius: 5px;
-  padding: 2vh 3vh;
-  text-align: center;
-  text-decoration: none;
-  width: 100%;
-  cursor: pointer; 
-}
-
-.button-entrar:hover {
-  background: #590a0a;
-}
-
 .col-lg-4{
   width: 17% !important; 
   padding: 1rem;
@@ -41,7 +26,6 @@ body {
   float: left;
   width: 100%;
   position: relative;
-  margin-left: 2vw;
 }
 
 
@@ -56,52 +40,7 @@ body {
   align-items: center;
 }
 
-.button-Cadastro{
-  width: 100%;
-  height: 100%; 
-  margin-left: 2vw;
-  padding: 1rem;
-}
-
-.button-Cadastro input{
-  width: 100%;
-  height: 100%; 
-  background-color: #000000;
-  color: #fffefe;
-  border-radius: 5px;
-  padding: 2vh 3vh;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer; 
-}
-
-.button-Cadastro input:hover {
-  background: #590a0a;
-}
-
-.button-Voltar{
-  width: auto;
-  height: auto;
-  padding: 1rem;
-}
-
-.button-Voltar input{
-  width: 100%;
-  height: 100%; 
-  background-color: #590a0a;
-  color: #fffefe;
-  border-radius: 5px;
-  padding: 2vh 3vh;
-  text-align: center;
-  text-decoration: none;
-  justify-content: center;
-  cursor: pointer; 
-}
-
-.button-Voltar input:hover {
-  background: #000000;
-}
-
 .width{
+  display: grid;
   width: 100% !important; 
 }

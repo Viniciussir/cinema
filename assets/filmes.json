@@ -59,6 +59,114 @@
 			"generoFilme": "Fantasia/Suspense",
 			"sessaoFilme": "21:45",
 			"artista": "Millie Bobby Brown"
+		},
+		{
+			"id": "6",
+			"tituloFilme": "A Noite dos Mistérios",
+			"sinopseFilme": "Em uma pequena cidade assolada por eventos sobrenaturais, um grupo de jovens decide investigar os mistérios ocultos que assombram a região. Eles se deparam com criaturas sombrias e segredos obscuros que desafiam sua coragem.",
+			"estreiaFilme": "15/06/2023",
+			"filmeCartaz": "caminho/para/o/cartaz.png",
+			"duracaoFilme": "1h55min",
+			"classificacaoFilme": "14 anos",
+			"generoFilme": "Suspense/Terror",
+			"sessaoFilme": "20:00",
+			"artista": "Emma Thompson"
+		},
+		{
+			"id": "7",
+			"tituloFilme": "A Jornada Perdida",
+			"sinopseFilme": "Um aventureiro destemido embarca em uma jornada perigosa para encontrar uma relíquia antiga que pode mudar o curso da história. Ele enfrenta desafios mortais e traições surpreendentes em sua busca pela verdade.",
+			"estreiaFilme": "10/08/2023",
+			"filmeCartaz": "caminho/para/o/cartaz.png",
+			"duracaoFilme": "2h15min",
+			"classificacaoFilme": "12 anos",
+			"generoFilme": "Ação/Aventura",
+			"sessaoFilme": "18:30",
+			"artista": "Tom Cruise"
+		},
+		{
+			"id": "8",
+			"tituloFilme": "O Mistério do Passado",
+			"sinopseFilme": "Uma arqueóloga brilhante desvenda segredos ancestrais ao explorar uma tumba antiga. Ela deve decifrar enigmas complicados e escapar de armadilhas mortais para desvendar a verdade oculta há séculos.",
+			"estreiaFilme": "25/09/2023",
+			"filmeCartaz": "caminho/para/o/cartaz.png",
+			"duracaoFilme": "2h05min",
+			"classificacaoFilme": "14 anos",
+			"generoFilme": "Ação/Aventura",
+			"sessaoFilme": "19:45",
+			"artista": "Lily Collins"
+		},
+		{
+			"id": "9",
+			"tituloFilme": "O Legado Perdido",
+			"sinopseFilme": "Um jovem herdeiro descobre uma antiga profecia que o coloca no centro de uma batalha épica entre o bem e o mal. Ele deve dominar seus poderes e reunir aliados improváveis para salvar o mundo do caos iminente.",
+			"estreiaFilme": "23/11/2023",
+			"filmeCartaz": "caminho/para/o/cartaz.png",
+			"duracaoFilme": "2h20min",
+			"classificacaoFilme": "Livre",
+			"generoFilme": "Fantasia/Aventura",
+			"sessaoFilme": "21:00",
+			"artista": "Daniel Radcliffe"
+		},
+		{
+			"id": "10",
+			"tituloFilme": "O Legado Perdido",
+			"sinopseFilme": "Um jovem herdeiro descobre uma antiga profecia que o coloca no centro de uma batalha épica entre o bem e o mal. Ele deve dominar seus poderes e reunir aliados improváveis para salvar o mundo do caos iminente.",
+			"estreiaFilme": "18/11/2023",
+			"filmeCartaz": "caminho/para/o/cartaz.png",
+			"duracaoFilme": "2h20min",
+			"classificacaoFilme": "Livre",
+			"generoFilme": "Fantasia/Aventura",
+			"sessaoFilme": "21:00",
+			"artista": "Daniel Radcliffe"
+		},
+		{
+			"id": "11",
+			"tituloFilme": "A Última Fronteira",
+			"sinopseFilme": "Em um futuro distópico, um grupo de rebeldes luta contra um regime autoritário que controla a população. Eles embarcam em uma missão perigosa para alcançar a última fronteira da liberdade e desafiar o domínio opressor.",
+			"estreiaFilme": "20/09/2023",
+			"filmeCartaz": "caminho/para/o/cartaz.png",
+			"duracaoFilme": "2h30min",
+			"classificacaoFilme": "16 anos",
+			"generoFilme": "Ficção Científica/Ação",
+			"sessaoFilme": "20:15",
+			"artista": "Jennifer Lawrence"
+		},
+		{
+			"id": "12",
+			"tituloFilme": "O Enigma do Passado",
+			"sinopseFilme": "Um detetive atormentado por seu passado sombrio se envolve em uma conspiração mortal que ameaça sua vida e as pessoas que ele ama. Ele deve desvendar os segredos enterrados há muito tempo antes que seja tarde demais.",
+			"estreiaFilme": "08/02/2023",
+			"filmeCartaz": "caminho/para/o/cartaz.png",
+			"duracaoFilme": "1h50min",
+			"classificacaoFilme": "16 anos",
+			"generoFilme": "Suspense/Drama",
+			"sessaoFilme": "19:30",
+			"artista": "Ryan Gosling"
+		},
+		{
+			"id": "13",
+			"tituloFilme": "A Lenda do Tesouro",
+			"sinopseFilme": "Uma jovem aventureira parte em uma jornada perigosa para encontrar um tesouro lendário que pode mudar sua vida. Ela enfrenta desafios mortais e traições enquanto segue as pistas deixadas por antigos exploradores.",
+			"estreiaFilme": "15/04/2024",
+			"filmeCartaz": "caminho/para/o/cartaz.png",
+			"duracaoFilme": "2h10min",
+			"classificacaoFilme": "12 anos",
+			"generoFilme": "Ação/Aventura",
+			"sessaoFilme": "20:30",
+			"artista": "Gal Gadot"
+		},
+		{
+			"id": "14",
+			"tituloFilme": "O Despertar das Sombras",
+			"sinopseFilme": "Uma jovem descobre poderes sobrenaturais assustadores e se vê envolvida em uma batalha ancestral entre as forças da luz e da escuridão. Ela deve aprender a controlar seu dom e enfrentar seu destino iminente.",
+			"estreiaFilme": "20/06/2023",
+			"filmeCartaz": "caminho/para/o/cartaz.png",
+			"duracaoFilme": "2h05min",
+			"classificacaoFilme": "14 anos",
+			"generoFilme": "Fantasia/Suspense",
+			"sessaoFilme": "21:45",
+			"artista": "Millie Bobby Brown"
 		}
 	]
 }
