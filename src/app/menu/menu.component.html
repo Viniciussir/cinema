@@ -1,9 +1,10 @@
-<p-toast></p-toast>
+<p-toast (onClose)="limparMensagem()" position="top-center"></p-toast>
 
 <div class="container" *ngIf="operacao =='menu'">
     <div class="row">
         <div class="card">
             <p-toolbar styleClass="p-mb-4">
+
                 <ng-template pTemplate="left">
                     <button 
                         pButton pRipple 
@@ -32,8 +33,9 @@
                         (click)="voltar()">
                     </button>
                 </ng-template>
+
             </p-toolbar>
-        
+                        
             <p-table 
                 #dt 
                 [value]="filmes" 
@@ -52,7 +54,7 @@
                 [showCurrentPageReport]="true">
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-ai-center p-jc-between">
-                        <h5 class="p-m-0">Flmes</h5>
+                        <h5 class="p-m-0">Filmes</h5>
                         <span class="p-input-icon-left">
                             <i class="pi pi-search"></i>
                         <input pInputText type="text" (input)="dt.filterGlobal($event.target, 'contains')" placeholder="Search..." />
@@ -99,7 +101,7 @@
     </div>
 </div>
 
-<p-dialog [(visible)]="productDialog" [style]="{width: '800px'}" header="Detalhes do Filme" [modal]="true" styleClass="p-fluid">
+<p-dialog [(visible)]="indPodeHabilitarDialogMenu" [style]="{width: '800px'}" header="Detalhes do Filme" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="p-field">
             <label for="name">Titulo do Filme</label>

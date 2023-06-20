@@ -1,138 +1,184 @@
+<p-toast (onClose)="limparMensagem()" position="top-center"></p-toast>
+
 <div class="container" *ngIf="operacao =='register'">
   <div class="row">
 
-    <p-messages [(value)]="msgs2" [enableService]="false"></p-messages>
+    <p-panel header="Informe os dados do Cinema" [toggleable]="true">
+      <ng-template pTemplate="icons">
+        <p-menu #menu id="config_menu" [popup]="true"></p-menu>
+      </ng-template>
+
+      <div class="flex">
+      
+        <div class="col-lg-4 box-comp">
+          <span class="p-float-label">
+            <input class="width" type="text" [(ngModel)]="register.nome" id="inputtext" pInputText> 
+            <label class="width" for="inputtext">Nome</label>
+          </span>
+        </div>
+  
+        <div class="col-lg-4 box-comp">
+          <span class="p-float-label">
+            <input class="width" type="text" [(ngModel)]="register.nomeFantasia" id="inputtext" pInputText> 
+            <label class="width" for="inputtext">Nome Fantasia</label>
+          </span>
+        </div>
+  
+        <div  class="col-lg-4 box-comp">
+          <span class="p-float-label">
+            <p-inputMask
+              class="width"
+              inputId="inputmask"
+              mask="999.999.999-99"
+              [(ngModel)]="register.cnpj"
+            ></p-inputMask>
+            <label class="width" for="inputmask">CNPJ</label>
+          </span>
+        </div>
+        
+      </div>
+
+    </p-panel>
+
+    <p-panel header="Informe o Endereço do Cinema" [toggleable]="true">
+      <ng-template pTemplate="icons">
+        <p-menu #menu id="config_menu" [popup]="true"></p-menu>
+      </ng-template>
+
+      <div class="flex">
+
+        <div class="col-lg-4 box-comp">
+          <span class="p-float-label">
+            <input class="width" type="text" [(ngModel)]="register.logradouro" id="inputtext" pInputText> 
+            <label class="width" for="inputtext">Logradouro</label>
+          </span>
+        </div>
+  
+        <div class="col-lg-4 box-comp">
+          <span class="p-float-label">
+            <p-inputNumber class="width" autocomplete="off" [(ngModel)]="register.numero" inputId="inputnumber"></p-inputNumber>
+            <label class="width" for="inputnumber">Numero</label>
+          </span>
+        </div>
+  
+        
+        <div class="col-lg-4 box-comp">
+          <span class="p-float-label">
+            <input class="width" type="text" [(ngModel)]="register.bairro" id="inputtext" pInputText> 
+            <label class="width" for="inputtext">Bairro</label>
+          </span>
+        </div>
+
+        <div class="col-lg-4 box-comp">
+          <span class="p-float-label">
+            <p-dropdown 
+              class="width" 
+              [options]="listaRegiao" 
+              [(ngModel)]="register.regiao" 
+              optionLabel="name" 
+              [showClear]="true" 
+              [filter]="true"
+              filterBy="name"
+              filterPlaceholder="Pesquisar..."
+              emptyFilterMessage="Nenhum registro encontrado"
+              [autoDisplayFirst]="false">
+            </p-dropdown>
+            <label class="width" for="inputtext">Região</label>
+          </span>
+        </div>
+  
+      </div>
+
+      <div class="flex">
+
+        <div class="col-lg-4 box-comp">
+          <span class="p-float-label">
+            <p-dropdown 
+              class="width" 
+              [options]="listaCidade" 
+              [(ngModel)]="register.cidade" 
+              optionLabel="name" 
+              [showClear]="true" 
+              [filter]="true"
+              filterBy="name"
+              filterPlaceholder="Pesquisar..."
+              emptyFilterMessage="Nenhum registro encontrado"
+              (onChange)="adicionarValorUf(true)"
+              (onClear)="adicionarValorUf(false)"
+              [autoDisplayFirst]="false">
+            </p-dropdown>
+            <label class="width" for="inputtext">Cidade</label>
+          </span>
+        </div>
     
-    <div class="titleCinema">
-      <label>Dados do Cadastro</label>
-    </div>
-   
-    <div class="flex">
-      
-      <div class="col-lg-4 box-comp">
-        <span class="p-float-label">
-          <input class="width" type="text" [(ngModel)]="register.nome" id="inputtext" pInputText> 
-          <label class="width" for="inputtext">Nome</label>
-        </span>
-      </div>
-
-      <div class="col-lg-4 box-comp">
-        <span class="p-float-label">
-          <input class="width" type="text" [(ngModel)]="register.nomeFantasia" id="inputtext" pInputText> 
-          <label class="width" for="inputtext">Nome Fantasia</label>
-        </span>
-      </div>
-
-      <div  class="col-lg-4 box-comp">
-        <span class="p-float-label">
-          <p-inputMask
+        <div class="col-lg-4 box-comp">
+          <span class="p-float-label">
+            <input 
+              class="width" 
+              type="text" 
+              [(ngModel)]="register.uf" 
+              id="inputtext" 
+              disabled="true"
+              pInputText> 
+            <label class="width" for="inputtext">UF</label>
+          </span>
+        </div>
+    
+        <div  class="col-lg-4 box-comp">
+          <span class="p-float-label">
+            <p-inputMask
             class="width"
-            inputId="inputmask"
-            mask="999.999.999-99"
-            [(ngModel)]="register.cnpj"
-          ></p-inputMask>
-          <label class="width" for="inputmask">CNPJ</label>
-        </span>
+              inputId="inputmask"
+              mask="99999-999"
+              [(ngModel)]="register.cep"
+            ></p-inputMask>
+            <label for="inputmask">CEP</label>
+          </span>
+        </div>
+
+        <div class="col-lg-4 box-comp">
+          <span class="p-float-label">
+            <input class="width" type="text" [(ngModel)]="register.complemento" id="inputtext" pInputText> 
+            <label class="width" for="inputtext">Complemento</label>
+          </span>
+        </div> 
+  
+      </div>  
+
+    </p-panel>
+
+    <p-panel header="Informe o Login de acesso para o Cinema" [toggleable]="true">
+      <ng-template pTemplate="icons">
+        <p-menu #menu id="config_menu" [popup]="true"></p-menu>
+      </ng-template>
+
+      <div class="flex">
+
+        <div class="col-lg-4 box-comp">
+          <span class="p-float-label">
+            <input class="width" type="text" [(ngModel)]="register.usuario" id="inputtext" pInputText> 
+            <label class="width" for="inputtext">Usuario</label>
+          </span>
+        </div>
+
+        <div class="col-lg-4 box-comp">
+          <span class="p-float-label">
+            <p-password class="width" [(ngModel)]="register.senha" [toggleMask]="true"></p-password> 
+            <label class="width" for="inputtext">Senha</label>
+          </span>
+        </div>
+
       </div>
-      
-    </div>
 
-    <div class="titleCinema">
-      <label>Endereço</label>
-    </div>
+    </p-panel>
 
-    <div class="flex">
-
+    <div class="flex" style="padding: 1.25rem;">
       <div class="col-lg-4 box-comp">
-        <span class="p-float-label">
-          <input class="width" type="text" [(ngModel)]="register.logradouro" id="inputtext" pInputText> 
-          <label class="width" for="inputtext">Logradouro</label>
-        </span>
-      </div>
-
-      <div class="col-lg-4 box-comp">
-        <span class="p-float-label">
-          <p-inputNumber class="width" [(ngModel)]="register.numero" inputId="inputnumber"></p-inputNumber>
-          <label class="width" for="inputnumber">Numero</label>
-        </span>
-      </div>
-
-      
-      <div class="col-lg-4 box-comp">
-        <span class="p-float-label">
-          <input class="width" type="text" [(ngModel)]="register.bairro" id="inputtext" pInputText> 
-          <label class="width" for="inputtext">Bairro</label>
-        </span>
-      </div>
-
-      <div class="col-lg-4 box-comp">
-        <span class="p-float-label">
-          <input class="width" type="text" [(ngModel)]="register.complemento" id="inputtext" pInputText> 
-          <label class="width" for="inputtext">Complemento</label>
-        </span>
-      </div> 
-
-    </div>
-
-    <div class="flex">
-
-      <div class="col-lg-4 box-comp">
-        <span class="p-float-label">
-          <input class="width" type="text" [(ngModel)]="register.cidade" id="inputtext" pInputText> 
-          <label class="width" for="inputtext">Cidade</label>
-        </span>
+        <button style="width: 100%;" class="p-button-success" (click)="cadastrar()" pButton type="button" icon="pi pi-check" iconPos="right" label="Cadastrar"></button>
       </div>
   
-      <div class="col-lg-4 box-comp">
-        <span class="p-float-label">
-          <input class="width" type="text" [(ngModel)]="register.uf" id="inputtext" pInputText> 
-          <label class="width" for="inputtext">UF</label>
-        </span>
-      </div>
-  
-      <div  class="col-lg-4 box-comp">
-        <span class="p-float-label">
-          <p-inputMask
-          class="width"
-            inputId="inputmask"
-            mask="99999-999"
-            [(ngModel)]="register.cep"
-          ></p-inputMask>
-          <label for="inputmask">CEP</label>
-        </span>
-      </div>
-
-    </div>
-
-    <div class="titleCinema">
-      <label>Login</label>
-    </div>
-
-    <div class="flex">
-
-      <div class="col-lg-4 box-comp">
-        <span class="p-float-label">
-          <input class="width" type="text" [(ngModel)]="register.usuario" id="inputtext" pInputText> 
-          <label class="width" for="inputtext">Usuario</label>
-        </span>
-      </div>
-
-      <div class="col-lg-4 box-comp">
-        <span class="p-float-label">
-          <p-password class="width" [(ngModel)]="register.senha" [toggleMask]="true"></p-password> 
-          <label class="width" for="inputtext">Senha</label>
-        </span>
-      </div>
-
-    </div>
-
-    <div class="flex">
-      <div class="col-lg-4 box-comp button-Cadastro">
-        <input (click)="cadastrar()"value="Cadastrar">
-      </div>
-  
-      <div class=" col-lg-4 box-comp button-Voltar">
-        <input (click)="voltar()"value="Voltar">
+      <div class=" col-lg-4 box-comp">
+        <button style="width: 100%;" class="p-button-danger" (click)="voltar()" pButton type="button" icon="pi pi-times" iconPos="right" label="Voltar"></button>
       </div>
     </div>
     
@@ -142,4 +188,3 @@
 <app-signin
  *ngIf="operacao =='sigin'">
 </app-signin>
-

@@ -7,6 +7,7 @@ export class Register {
     numero:any = '';
     bairro:any = '';
     complemento:any = '';
+    regiao:any = '';
     cidade:any = '';
     uf:any = '';
     cep:any = '';

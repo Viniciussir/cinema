@@ -20,7 +20,7 @@ export class MenuComponent implements OnInit {
 
     operacao:any = '';
 
-    productDialog: boolean = false;
+    indPodeHabilitarDialogMenu: boolean = false;
 
     filmes: DadosFilme[] = [];
 
@@ -43,7 +43,7 @@ export class MenuComponent implements OnInit {
     openNew() {
         this.filme = {};
         this.submitted = false;
-        this.productDialog = true;
+        this.indPodeHabilitarDialogMenu = true;
     }
 
     deleteSelectedProducts() {
@@ -60,7 +60,7 @@ export class MenuComponent implements OnInit {
 
     editProduct(product: DadosFilme) {
         this.filme = {...product};
-        this.productDialog = true;
+        this.indPodeHabilitarDialogMenu = true;
     }
 
     deleteProduct(product: DadosFilme) {
@@ -77,7 +77,7 @@ export class MenuComponent implements OnInit {
     }
 
     hideDialog() {
-        this.productDialog = false;
+        this.indPodeHabilitarDialogMenu = false;
         this.submitted = false;
     }
     
@@ -96,7 +96,7 @@ export class MenuComponent implements OnInit {
             }
 
             this.filmes = [...this.filmes];
-            this.productDialog = false;
+            this.indPodeHabilitarDialogMenu = false;
             this.filme = {};
         }
     }
@@ -124,6 +124,10 @@ export class MenuComponent implements OnInit {
 
     voltar(){
         this.operacao = Operacao.SIGIN;
+    }
+
+    limparMensagem(){
+        this.messageService.clear();
     }
 
 }
