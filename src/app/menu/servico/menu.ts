@@ -3,18 +3,16 @@ export interface DadosFilme {
     tituloFilme?:any;
     sinopseFilme?:any;
     estreiaFilme?:any;
-    filmeCartaz?:any;
     duracaoFilme?:any;
     classificacaoFilme?:any;
-    generoFilme?:salaSessao;
-    sessaoFilme?:any;
-    artista?:any;
+    generoFilme?:any;
+    sessaoFilme?:sessaoFilme;
 }
 
-export class salaSessao {
-    sala:any;
-    idioma:any;
-    data:any;
-    horario:[] = []
+export class sessaoFilme {
+    sala:any = ''
+    idioma:any = ''
+    data:any = ''
+    horario:[] = [];
 }
 

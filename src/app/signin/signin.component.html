@@ -11,7 +11,7 @@
       <div class="login">
 
         <div>
-          <div class="form-group ">
+          <div class="form-group">
             <span class="p-float-label">
               <input class="width" id="float-input" type="text" [(ngModel)]="signin.user" pInputText/>
               <label for="float-input">Usuário</label>
@@ -44,5 +44,6 @@
 </app-register>
 
 <app-menu
- *ngIf="operacao =='menu'">
+ *ngIf="operacao =='menu'"
+ [nomeCinema]="nomeCinema">
 </app-menu>

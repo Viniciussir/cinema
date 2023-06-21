@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { DadosFilme } from './servico/menu';
+import { Component,Input, OnInit } from '@angular/core';
+import { DadosFilme, sessaoFilme } from './servico/menu';
 import { ProductService } from './servico/menu.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Operacao } from '../shared/operacao';
@@ -18,6 +18,8 @@ import { Operacao } from '../shared/operacao';
 })
 export class MenuComponent implements OnInit {
 
+    @Input('nomeCinema') nomeCinema:any;
+
     operacao:any = '';
 
     indPodeHabilitarDialogMenu: boolean = false;
@@ -30,6 +32,14 @@ export class MenuComponent implements OnInit {
 
     submitted: boolean = false;
 
+    listaGeneroFilme:any [] = [];
+    valorGeneroFilme:any = '';
+
+    valorClassificacao:any = 0;
+
+    valorSala:any [] = []
+
+
     constructor(
       private productService: ProductService, 
       private messageService: MessageService, 
@@ -38,21 +48,35 @@ export class MenuComponent implements OnInit {
     ngOnInit() {
         this.operacao = Operacao.MENU;
         this.productService.getProducts().then(data => this.filmes = data);
+
+        this.listaGeneroFilme = [
+            { "code": "Ação", "name": "Ação" },
+            { "code": "Comédia", "name": "Comédia" },
+            { "code": "Drama", "name": "Drama" },
+            { "code": "Terror", "name": "Terror" },
+            { "code": "Romance", "name": "Romance" },
+            { "code": "Aventura", "name": "Aventura" },
+            { "code": "Ficção Científica", "name": "Ficção Científica" },
+            { "code": "Suspense", "name": "Suspense" },
+            { "code": "Fantasia", "name": "Fantasia" },
+            { "code": "Animação", "name": "Animação" },
+        ];
     }
 
-    openNew() {
+    abrirNovo() {
         this.filme = {};
         this.submitted = false;
         this.indPodeHabilitarDialogMenu = true;
     }
 
-    deleteSelectedProducts() {
+    deletarTodosFilmes() {
         this.confirmationService.confirm({
             message: 'Tem certeza que deseja excluir os Filmes selecionados?',
-            header: 'Confirme',
+            header: 'Confirmar',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
                 this.filmes = this.filmes.filter(val => !this.filmesSelecionado.includes(val));
+                this.filmesSelecionado = [];
                 this.messageService.add({severity:'success', summary: 'Sucesso', detail: 'Filme Deletado', life: 3000});
             }
         });
@@ -60,6 +84,7 @@ export class MenuComponent implements OnInit {
 
     editProduct(product: DadosFilme) {
         this.filme = {...product};
+        this.preencherValoresEditarFilmes();
         this.indPodeHabilitarDialogMenu = true;
     }
 
@@ -80,9 +105,21 @@ export class MenuComponent implements OnInit {
         this.indPodeHabilitarDialogMenu = false;
         this.submitted = false;
     }
+
+    formatarData(data:any) {
+        const dia = data.getDate().toString().padStart(2, '0'); // Obtém o dia e adiciona um zero à esquerda, se necessário
+        const mes = (data.getMonth() + 1).toString().padStart(2, '0'); // Obtém o mês (0-11) e adiciona um zero à esquerda, se necessário
+        const ano = data.getFullYear().toString(); // Obtém o ano com 4 dígitos
+      
+        return `${dia}.${mes}.${ano}`;
+      }
     
     saveProduct() {
         this.submitted = true;
+
+        let dataFormatada = this.formatarData(this.filme.estreiaFilme);
+
+        this.filme.estreiaFilme = dataFormatada;
 
         if (this.filme.tituloFilme.trim()) {
             if (this.filme.id) {
@@ -128,6 +165,47 @@ export class MenuComponent implements OnInit {
 
     limparMensagem(){
         this.messageService.clear();
+    }
+
+    selecionarFilme(){
+        if(this.valorGeneroFilme){
+            this.filme.generoFilme = this.valorGeneroFilme.name;
+        } else {
+            this.filme.generoFilme = '';
+        } 
+    }
+
+    selecionarClassificacao(){
+        if(this.valorClassificacao || this.valorClassificacao === 0){
+          this.filme.classificacaoFilme = this.valorClassificacao;
+        }else {
+          this.filme.classificacaoFilme = '';
+        }    
+    }
+
+    onRowEditInit(linha:any) {
+        console.log(linha)
+    }
+
+    onRowEditSave(linha:any) {
+        console.log(linha)
+    }
+
+    onRowEditCancel(linha: any) {
+        console.log(linha)
+    }
+
+    preencherValoresEditarFilmes(){
+        if(this.filme.classificacaoFilme){
+            this.valorClassificacao = this.filme.classificacaoFilme;
+        }
+        if(this.filme.generoFilme){
+            this.valorGeneroFilme = {
+                'code': this.filme.generoFilme,
+                'name': this.filme.generoFilme,
+            }
+        }
+
     }
 
 }

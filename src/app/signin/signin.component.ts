@@ -14,6 +14,8 @@ export class SigninComponent implements OnInit {
 
   operacao:any = '';
 
+  nomeCinema:any = '';
+
   constructor(
     private messageService: MessageService, 
   ) {}
@@ -42,10 +44,13 @@ export class SigninComponent implements OnInit {
 
   validarlogin(){
     if(this.signin.user == 'CineRoxy' && this.signin.password == '123456'){
+      this.nomeCinema = this.signin.user;
       this.operacao = Operacao.MENU;
     } else if(this.signin.user == 'CineMark' && this.signin.password == '123456'){
+      this.nomeCinema = this.signin.user;
       this.operacao = Operacao.MENU;
     } else if(this.signin.user == 'CineFlix' && this.signin.password == '123456'){
+      this.nomeCinema = this.signin.user;
       this.operacao = Operacao.MENU;
     } else {
       this.messageService.add({severity:'error', summary: 'Erro', detail: 'Verifique os dados informados.', life: 3000});

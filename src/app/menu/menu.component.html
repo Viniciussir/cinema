@@ -5,23 +5,27 @@
         <div class="card">
             <p-toolbar styleClass="p-mb-4">
 
-                <ng-template pTemplate="left">
+                <div>
                     <button 
-                        pButton pRipple 
-                        label="Novo" 
-                        icon="pi pi-plus" 
-                        class="p-button-success p-mr-2" 
-                        (click)="openNew()">
-                    </button>
-                    <button
-                        style="margin-left: 5px;"
-                        pButton
-                        pRipple
-                        icon="pi pi-trash"
-                        class="p-button-danger"
-                        (click)="deleteSelectedProducts()"
-                        [disabled]="!filmesSelecionado || !filmesSelecionado.length"
-                    ></button>
+                    pButton pRipple 
+                    label="Novo" 
+                    icon="pi pi-plus" 
+                    class="p-button-success p-mr-2" 
+                    (click)="abrirNovo()">
+                </button>
+                <button
+                    style="margin-left: 5px;"
+                    pButton
+                    pRipple
+                    icon="pi pi-trash"
+                    class="p-button-danger"
+                    (click)="deletarTodosFilmes()"
+                    [disabled]="!filmesSelecionado || !filmesSelecionado.length"
+                ></button>
+                </div>
+               
+                <ng-template pTemplate="left">
+                    <span class="titleCinema">Filmes listados para {{nomeCinema}}</span> 
                 </ng-template>
 
                 <ng-template pTemplate="right">
@@ -52,15 +56,6 @@
                 dataKey="id"
                 currentPageReportTemplate="Mostrando {first} para {last} de {totalRecords} entradas" 
                 [showCurrentPageReport]="true">
-                <ng-template pTemplate="caption">
-                    <div class="p-d-flex p-ai-center p-jc-between">
-                        <h5 class="p-m-0">Filmes</h5>
-                        <span class="p-input-icon-left">
-                            <i class="pi pi-search"></i>
-                        <input pInputText type="text" (input)="dt.filterGlobal($event.target, 'contains')" placeholder="Search..." />
-                        </span>
-                    </div>
-                </ng-template>
                 <ng-template pTemplate="header">
                     <tr>
                         <th style="width: 3rem">
@@ -74,19 +69,21 @@
                         <th></th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-product>
+                <ng-template pTemplate="body" let-filmes>
                     <tr>
                         <td>
-                            <p-tableCheckbox [value]="product"></p-tableCheckbox>
+                            <p-tableCheckbox [value]="filmes"></p-tableCheckbox>
                         </td>
-                        <td>{{product.tituloFilme}}</td>
-                        <td>{{product.sinopseFilme}}</td>
-                        <td>{{product.estreiaFilme}}</td>
-                        <td>{{product.duracaoFilme}}</td>
-                        <td>{{product.generoFilme}}</td>
+                        <td>{{filmes.tituloFilme}}</td>
+                        <td>{{filmes.sinopseFilme}}</td>
+                        <td>{{filmes.estreiaFilme}}</td>
+                        <td>{{filmes.duracaoFilme}}</td>
+                        <td>{{filmes.generoFilme}}</td>
                         <td>
-                            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editProduct(product)"></button>
-                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteProduct(product)"></button>
+                            <div class="flex">
+                                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editProduct(filmes)"></button>
+                                <button style="margin-left: 8px;" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteProduct(filmes)"></button>    
+                            </div>
                         </td>
                     </tr>
                 </ng-template>
@@ -101,42 +98,148 @@
     </div>
 </div>
 
-<p-dialog [(visible)]="indPodeHabilitarDialogMenu" [style]="{width: '800px'}" header="Detalhes do Filme" [modal]="true" styleClass="p-fluid">
+<p-dialog [(visible)]="indPodeHabilitarDialogMenu" [style]="{width: '70vw'}" header="Detalhes do Filme" [modal]="true" styleClass="p-fluid">
+    
     <ng-template pTemplate="content">
-        <div class="p-field">
-            <label for="name">Titulo do Filme</label>
-            <input type="text" pInputText id="name" [(ngModel)]="filme.tituloFilme" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !filme.tituloFilme">O Titulo do Filme é obrigatório.</small>
+
+        <div class="col-lg-4 box-comp mt-2">
+            <span class="p-float-label">
+              <input class="width" type="text" [(ngModel)]="filme.tituloFilme" id="inputtext" pInputText> 
+              <label class="width" for="inputtext">Titulo do Filme</label>
+            </span>
         </div>
-        <div class="p-field">
-            <label for="description">Sinopse</label>
-            <textarea id="description" pInputTextarea [(ngModel)]="filme.sinopseFilme" required rows="3" cols="20"></textarea>
-            <small class="p-invalid" *ngIf="submitted && !filme.sinopseFilme">A Sinopse é obrigatório.</small>
+
+        <div class="col-lg-4 box-comp mt-2">
+            <span class="p-float-label">
+              <input class="width" type="text" [(ngModel)]="filme.sinopseFilme" id="inputtext" pInputText> 
+              <label class="width" for="inputtext">Sinopse</label>
+            </span>
         </div>
-        <div class="p-field">
-            <label for="name">Data da Estreia</label>
-            <input type="text" pInputText id="name" [(ngModel)]="filme.estreiaFilme" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !filme.estreiaFilme">A Data da Estreia é obrigatório.</small>
+
+        <div class="col-lg-4 box-comp mt-2">
+            <span class="p-float-label">
+              <p-calendar inputId="basic" [(ngModel)]="filme.estreiaFilme" dateFormat="dd.mm.yy"></p-calendar>
+              <label class="width" for="inputtext">Data da Estreia</label>
+            </span>
         </div>
-        <div class="p-field">
-            <label for="name">Tempo de Duração</label>
-            <input type="text" pInputText id="name" [(ngModel)]="filme.duracaoFilme" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !filme.duracaoFilme">O Tempo de Duração é obrigatório.</small>
+
+        <div class="col-lg-4 box-comp">
+            <span class="p-float-label">
+              <p-dropdown 
+                class="width" 
+                [options]="listaGeneroFilme" 
+                [(ngModel)]="valorGeneroFilme" 
+                (onChange)="selecionarFilme()"
+                optionLabel="name" 
+                [showClear]="true" 
+                [filter]="true"
+                filterBy="name"
+                filterPlaceholder="Pesquisar..."
+                emptyFilterMessage="Nenhum registro encontrado"
+                [autoDisplayFirst]="false">
+              </p-dropdown>
+              <label class="width" for="inputtext">Genero</label>
+            </span>
         </div>
-        <div class="p-field">
-            <label for="name">Genero</label>
-            <input type="text" pInputText id="name" [(ngModel)]="filme.generoFilme" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !filme.generoFilme">O Genero do Filme é obrigatório.</small>
+
+        <div class="col-lg-4 box-comp">
+            <span class="p-float-label">
+              <p-inputNumber 
+                class="width" autocomplete="off" 
+                [(ngModel)]="valorClassificacao" 
+                (ngModelChange)="selecionarClassificacao()"
+                inputId="inputnumber">
+              </p-inputNumber>
+              <label class="width" for="inputnumber">Classificação Indicativa </label>
+            </span>
         </div>
+
+        <div class="col-lg-4 box-comp">
+            <span class="p-float-label">
+                <p-inputMask
+                    class="width"
+                    inputId="inputmask"
+                    mask="99:99"
+                    [(ngModel)]="filme.duracaoFilme"
+                    ></p-inputMask>
+                <label label class="width" for="inputnumber">Duração do Filme</label>
+            </span>
+        </div>
+
+        <div class="card">
+            <h5>Sessões do Filme</h5>
+                <p-table [value]="filmes" dataKey="id" editMode="row">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Nome da Sala</th>
+                            <th>Dublado</th>
+                            <th>3D</th>
+                            <th>Horarios</th>
+                            <th style="width:8rem"></th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-product let-editing="editing" let-ri="rowIndex">
+                        <tr [pEditableRow]="filmes">
+                            <td pEditableColumn>
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="text" [(ngModel)]="valorSala">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{valorSala}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td pEditableColumn>
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="text" [(ngModel)]="product.name" required>
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.name}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td pEditableColumn>
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <p-dropdown [options]="listaGeneroFilme" [(ngModel)]="product.inventoryStatus" [style]="{'width':'100%'}"></p-dropdown>
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.inventoryStatus}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td pEditableColumn>
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="text" [(ngModel)]="product.price">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.price | currency: 'USD'}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td style="text-align:center">
+                                <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit($event)" class="p-button-rounded p-button-text"></button>
+                                <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave($event)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
+                                <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel($event)" class="p-button-rounded p-button-text p-button-danger"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+        </div>
+
     </ng-template>
     
     <ng-template pTemplate="footer">
         <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
         <button pButton pRipple label="Salvar" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
     </ng-template>
+
 </p-dialog>
 
-<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+<p-confirmDialog [style]="{width: '450px'}" [baseZIndex]="10000"></p-confirmDialog>
 
 <app-signin
  *ngIf="operacao =='sigin'">
