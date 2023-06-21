@@ -9,7 +9,6 @@
 			"duracaoFilme": "02:10",
 			"classificacaoFilme": "16",
 			"generoFilme": "Suspense",
-			"sessaoFilme": "19:30",
 			"artista": "John Smith"
 		}, 
 		{
@@ -21,7 +20,6 @@
 			"duracaoFilme": "02:20",
 			"classificacaoFilme": "14",
 			"generoFilme": "Ficção Científica",
-			"sessaoFilme": "14:00",
 			"artista": "Emily Johnson"
 		}, 
 		{
@@ -33,7 +31,6 @@
 			"duracaoFilme": "02:05",
 			"classificacaoFilme": "12",
 			"generoFilme": "Ação",
-			"sessaoFilme": "17:45",
 			"artista": "Sarah Davis"
 		}, 
 		{
@@ -45,7 +42,6 @@
 			"duracaoFilme": "01:50",
 			"classificacaoFilme": "14",
 			"generoFilme": "Terror",
-			"sessaoFilme": "21:15",
 			"artista": "Michael Johnson"
 		}, 
 		{
@@ -57,7 +53,6 @@
 			"duracaoFilme": "02:05",
 			"classificacaoFilme": "14",
 			"generoFilme": "Fantasia",
-			"sessaoFilme": "21:45",
 			"artista": "Millie Bobby Brown"
 		}
 	]

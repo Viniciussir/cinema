@@ -1,6 +1,6 @@
 import { Component,Input, OnInit } from '@angular/core';
-import { DadosFilme, sessaoFilme } from './servico/menu';
-import { ProductService } from './servico/menu.service';
+import { DadosFilme, SessaoFilme } from './servico/menu';
+import { MenuService } from './servico/menu.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Operacao } from '../shared/operacao';
 
@@ -39,15 +39,25 @@ export class MenuComponent implements OnInit {
 
     valorSala:any [] = []
 
+    listaSimNao:any [] = [];
+
+    listaHorarios:any [] = [];
+    valorHorario:any = '';
+
+    clonedSessaoFilme: { [s: string]: SessaoFilme } = {};
+
+    sessao: SessaoFilme[] = [];
+    sessaoFilme: SessaoFilme = {};
+
 
     constructor(
-      private productService: ProductService, 
+      private menuService: MenuService, 
       private messageService: MessageService, 
       private confirmationService: ConfirmationService) { }
 
     ngOnInit() {
         this.operacao = Operacao.MENU;
-        this.productService.getProducts().then(data => this.filmes = data);
+        this.menuService.getFilmes().then(data => this.filmes = data);
 
         this.listaGeneroFilme = [
             { "code": "Ação", "name": "Ação" },
@@ -61,10 +71,69 @@ export class MenuComponent implements OnInit {
             { "code": "Fantasia", "name": "Fantasia" },
             { "code": "Animação", "name": "Animação" },
         ];
+
+        this.listaSimNao = [
+            { "value": "Sim", "label": "Sim" },
+            { "value": "Não", "label": "Não" },
+        ];
+
+        this.listaHorarios = [
+            { "code": "01:00", "name": "01:00" },
+            { "code": "01:30", "name": "01:30" },
+            { "code": "02:00", "name": "02:00" },
+            { "code": "02:30", "name": "02:30" },
+            { "code": "03:00", "name": "03:00" },
+            { "code": "03:30", "name": "03:30" },
+            { "code": "04:00", "name": "04:00" },
+            { "code": "04:30", "name": "04:30" },
+            { "code": "05:00", "name": "05:00" },
+            { "code": "05:30", "name": "05:30" },
+            { "code": "06:00", "name": "06:00" },
+            { "code": "06:30", "name": "06:30" },
+            { "code": "07:00", "name": "07:00" },
+            { "code": "07:30", "name": "07:30" },
+            { "code": "08:00", "name": "08:00" },
+            { "code": "08:30", "name": "08:30" },
+            { "code": "09:00", "name": "09:00" },
+            { "code": "09:30", "name": "09:30" },
+            { "code": "10:00", "name": "10:00" },
+            { "code": "10:30", "name": "10:30" },
+            { "code": "11:00", "name": "11:00" },
+            { "code": "11:30", "name": "11:30" },
+            { "code": "12:00", "name": "12:00" },
+            { "code": "12:30", "name": "12:30" },
+            { "code": "13:00", "name": "13:00" },
+            { "code": "13:30", "name": "13:30" },
+            { "code": "14:00", "name": "14:00" },
+            { "code": "14:30", "name": "14:30" },
+            { "code": "15:00", "name": "15:00" },
+            { "code": "15:30", "name": "15:30" },
+            { "code": "16:00", "name": "16:00" },
+            { "code": "16:30", "name": "16:30" },
+            { "code": "17:00", "name": "17:00" },
+            { "code": "17:30", "name": "17:30" },
+            { "code": "18:00", "name": "18:00" },
+            { "code": "18:30", "name": "18:30" },
+            { "code": "19:00", "name": "19:00" },
+            { "code": "19:30", "name": "19:30" },
+            { "code": "20:00", "name": "20:00" },
+            { "code": "20:30", "name": "20:30" },
+            { "code": "21:00", "name": "21:00" },
+            { "code": "21:30", "name": "21:30" },
+            { "code": "22:00", "name": "22:00" },
+            { "code": "22:30", "name": "22:30" },
+            { "code": "23:00", "name": "23:00" },
+            { "code": "23:30", "name": "23:30" },
+            { "code": "00:00", "name": "00:00" },
+            { "code": "00:30", "name": "00:30" },
+        ];
     }
+
+   
 
     abrirNovo() {
         this.filme = {};
+        this.sessaoFilme = {};
         this.submitted = false;
         this.indPodeHabilitarDialogMenu = true;
     }
@@ -82,8 +151,13 @@ export class MenuComponent implements OnInit {
         });
     }
 
-    editProduct(product: DadosFilme) {
-        this.filme = {...product};
+    editProduct(filme: DadosFilme) {
+        this.filme = {...filme};
+        if(filme.tituloFilme){
+            if(filme.tituloFilme == "O Mistério da Mansão"){
+                this.menuService.getSessaoCine1().then(cine1 => this.sessao = cine1);
+            }
+        }
         this.preencherValoresEditarFilmes();
         this.indPodeHabilitarDialogMenu = true;
     }
@@ -107,9 +181,9 @@ export class MenuComponent implements OnInit {
     }
 
     formatarData(data:any) {
-        const dia = data.getDate().toString().padStart(2, '0'); // Obtém o dia e adiciona um zero à esquerda, se necessário
-        const mes = (data.getMonth() + 1).toString().padStart(2, '0'); // Obtém o mês (0-11) e adiciona um zero à esquerda, se necessário
-        const ano = data.getFullYear().toString(); // Obtém o ano com 4 dígitos
+        const dia = data.getDate().toString().padStart(2, '0');
+        const mes = (data.getMonth() + 1).toString().padStart(2, '0');
+        const ano = data.getFullYear().toString();
       
         return `${dia}.${mes}.${ano}`;
       }
@@ -183,16 +257,30 @@ export class MenuComponent implements OnInit {
         }    
     }
 
-    onRowEditInit(linha:any) {
-        console.log(linha)
+    onRowEditInit(sessaoFilme: SessaoFilme) {
+        this.clonedSessaoFilme[sessaoFilme.id] = { ...sessaoFilme };
     }
 
-    onRowEditSave(linha:any) {
-        console.log(linha)
-    }
+    onRowEditSave(sessaoFilme: SessaoFilme) {
+        if (sessaoFilme.nome > 0) {
+            delete this.clonedSessaoFilme[sessaoFilme.id];
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Sucesso',
+              detail: 'Sessão Atualizada',
+            });
+        } else {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Erro',
+              detail: 'Informe o Nome da Sessão',
+            });
+        }
+    } 
 
-    onRowEditCancel(linha: any) {
-        console.log(linha)
+    onRowEditCancel(sessaoFilme: SessaoFilme, index: number) {
+        this.sessao[index] = this.clonedSessaoFilme[sessaoFilme.id];
+        delete this.sessao[sessaoFilme.id];
     }
 
     preencherValoresEditarFilmes(){
@@ -205,7 +293,29 @@ export class MenuComponent implements OnInit {
                 'name': this.filme.generoFilme,
             }
         }
+        if(this.sessaoFilme.horario){
+            let listaHorario = this.sessaoFilme.horario.split(",")
+            let valor:any [] = [];
+            for (let i = 0; i < listaHorario.length; i++) {
+                valor.push({
+                    'code': listaHorario[i],
+                    'name': listaHorario[i]
+                });
+            }
+            this.valorHorario = valor;
+        }
+    }
 
+    selecionarHorario(){
+        if(this.valorHorario){
+            let valor:any [] = [];
+            for (let i = 0; i < this.valorHorario.length; i++) {
+                valor.push(this.valorHorario[i].name);
+            }
+            this.sessaoFilme.horario = valor;
+        } else {
+            this.sessaoFilme.horario = '';
+        } 
     }
 
 }

@@ -168,7 +168,7 @@
 
         <div class="card">
             <h5>Sessões do Filme</h5>
-                <p-table [value]="filmes" dataKey="id" editMode="row">
+                <p-table [value]="sessao" dataKey="id" editMode="row">
                     <ng-template pTemplate="header">
                         <tr>
                             <th>Nome da Sala</th>
@@ -178,52 +178,56 @@
                             <th style="width:8rem"></th>
                         </tr>
                     </ng-template>
-                    <ng-template pTemplate="body" let-product let-editing="editing" let-ri="rowIndex">
-                        <tr [pEditableRow]="filmes">
+                    <ng-template pTemplate="body" let-sessao let-editing="editing" let-ri="rowIndex">
+                        <tr [pEditableRow]="sessao">
                             <td pEditableColumn>
                                 <p-cellEditor>
                                     <ng-template pTemplate="input">
-                                        <input pInputText type="text" [(ngModel)]="valorSala">
+                                        <input pInputText type="text" [(ngModel)]="sessao.nome">
                                     </ng-template>
                                     <ng-template pTemplate="output">
-                                        {{valorSala}}
+                                        {{sessao.nome}}
                                     </ng-template>
                                 </p-cellEditor>
                             </td>
                             <td pEditableColumn>
                                 <p-cellEditor>
                                     <ng-template pTemplate="input">
-                                        <input pInputText type="text" [(ngModel)]="product.name" required>
+                                        <p-dropdown [options]="listaSimNao" [(ngModel)]="sessao.dublado" [style]="{'width':'100%'}"></p-dropdown>
                                     </ng-template>
                                     <ng-template pTemplate="output">
-                                        {{product.name}}
+                                        {{sessao.dublado}}
                                     </ng-template>
                                 </p-cellEditor>
                             </td>
                             <td pEditableColumn>
                                 <p-cellEditor>
                                     <ng-template pTemplate="input">
-                                        <p-dropdown [options]="listaGeneroFilme" [(ngModel)]="product.inventoryStatus" [style]="{'width':'100%'}"></p-dropdown>
+                                        <p-dropdown [options]="listaSimNao" [(ngModel)]="sessao.dimensionamento" [style]="{'width':'100%'}"></p-dropdown>
                                     </ng-template>
                                     <ng-template pTemplate="output">
-                                        {{product.inventoryStatus}}
+                                        {{sessao.dimensionamento}}
                                     </ng-template>
                                 </p-cellEditor>
                             </td>
                             <td pEditableColumn>
                                 <p-cellEditor>
                                     <ng-template pTemplate="input">
-                                        <input pInputText type="text" [(ngModel)]="product.price">
+                                        <p-multiSelect 
+                                            [options]="listaHorarios" 
+                                            (onChange)="selecionarHorario()" 
+                                            [(ngModel)]="valorHorario" 
+                                            optionLabel="name"></p-multiSelect>
                                     </ng-template>
                                     <ng-template pTemplate="output">
-                                        {{product.price | currency: 'USD'}}
+                                        {{sessao.horario}}
                                     </ng-template>
                                 </p-cellEditor>
                             </td>
                             <td style="text-align:center">
-                                <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit($event)" class="p-button-rounded p-button-text"></button>
-                                <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave($event)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
-                                <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel($event)" class="p-button-rounded p-button-text p-button-danger"></button>
+                                <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit(sessao)" class="p-button-rounded p-button-text"></button>
+                                <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(sessao)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
+                                <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(sessao, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
                             </td>
                         </tr>
                     </ng-template>

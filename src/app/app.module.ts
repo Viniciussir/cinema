@@ -43,7 +43,7 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
-import { ProductService } from './menu/servico/menu.service';
+import { MenuService } from './menu/servico/menu.service';
 import {PanelModule} from 'primeng/panel';
 import { MenuModule } from 'primeng/menu';
 
@@ -94,7 +94,7 @@ import { MenuModule } from 'primeng/menu';
     PanelModule,
     MenuModule,
   ],
-  providers: [ProductService, MessageService, ConfirmationService],
+  providers: [MenuService, MessageService, ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
