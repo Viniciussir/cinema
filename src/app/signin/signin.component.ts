@@ -43,13 +43,13 @@ export class SigninComponent implements OnInit {
   }
 
   validarlogin(){
-    if(this.signin.user == 'CineRoxy' && this.signin.password == '123456'){
+    if(this.signin.user == 'Cineroxy' && this.signin.password == '123456'){
       this.nomeCinema = this.signin.user;
       this.operacao = Operacao.MENU;
-    } else if(this.signin.user == 'CineMark' && this.signin.password == '123456'){
+    } else if(this.signin.user == 'Cinemark' && this.signin.password == '123456'){
       this.nomeCinema = this.signin.user;
       this.operacao = Operacao.MENU;
-    } else if(this.signin.user == 'CineFlix' && this.signin.password == '123456'){
+    } else if(this.signin.user == 'Cineflix' && this.signin.password == '123456'){
       this.nomeCinema = this.signin.user;
       this.operacao = Operacao.MENU;
     } else {

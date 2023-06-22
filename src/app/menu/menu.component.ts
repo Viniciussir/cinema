@@ -71,6 +71,8 @@ export class MenuComponent implements OnInit {
             { "code": "Suspense", "name": "Suspense" },
             { "code": "Fantasia", "name": "Fantasia" },
             { "code": "Animação", "name": "Animação" },
+            { "code": "Crime", "name": "Crime" },
+            { "code": "Thriller", "name": "Thriller" },
         ];
 
         this.listaSimNao = [
@@ -217,7 +219,7 @@ export class MenuComponent implements OnInit {
         const ano = data.getFullYear().toString();
       
         return `${dia}.${mes}.${ano}`;
-      }
+    }
     
     salvarFilme() {
         if(!this.filme.tituloFilme || !this.filme.sinopseFilme || !this.filme.estreiaFilme || !this.filme.generoFilme ||
