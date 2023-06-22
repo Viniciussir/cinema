@@ -81,8 +81,8 @@
                         <td>{{filmes.generoFilme}}</td>
                         <td>
                             <div class="flex">
-                                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editProduct(filmes)"></button>
-                                <button style="margin-left: 8px;" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteProduct(filmes)"></button>    
+                                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editarFilme(filmes, filmes.sessao)"></button>
+                                <button style="margin-left: 8px;" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deletarFilme(filmes)"></button>    
                             </div>
                         </td>
                     </tr>
@@ -213,11 +213,7 @@
                             <td pEditableColumn>
                                 <p-cellEditor>
                                     <ng-template pTemplate="input">
-                                        <p-multiSelect 
-                                            [options]="listaHorarios" 
-                                            (onChange)="selecionarHorario()" 
-                                            [(ngModel)]="valorHorario" 
-                                            optionLabel="name"></p-multiSelect>
+                                        <input pInputText type="text" [(ngModel)]="sessao.horario">
                                     </ng-template>
                                     <ng-template pTemplate="output">
                                         {{sessao.horario}}
@@ -237,8 +233,8 @@
     </ng-template>
     
     <ng-template pTemplate="footer">
-        <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
-        <button pButton pRipple label="Salvar" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
+        <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text" (click)="fecharDialog()"></button>
+        <button pButton pRipple label="Salvar" icon="pi pi-check" class="p-button-text" (click)="salvarFilme()"></button>
     </ng-template>
 
 </p-dialog>

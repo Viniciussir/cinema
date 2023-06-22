@@ -9,7 +9,37 @@
 			"duracaoFilme": "02:10",
 			"classificacaoFilme": "16",
 			"generoFilme": "Suspense",
-			"artista": "John Smith"
+			"artista": "John Smith",
+			"sessao" : [
+				{
+					"id": "1",
+					"nome": "Sala 1",
+					"dublado": "Sim",
+					"dimensionamento": "Não",
+					"horario": "12:00,15:00,19:00"
+				},
+				{
+					"id": "2",
+					"nome": "Sala 2",
+					"dublado": "Sim",
+					"dimensionamento": "Não",
+					"horario": "12:00,16:00,20:00"
+				},
+				{
+					"id": "3",
+					"nome": "Sala 3",
+					"dublado": "Sim",
+					"dimensionamento": "Não",
+					"horario": "08:00,14:00"
+				},
+				{
+					"id": "4",
+					"nome": "Sala 4",
+					"dublado": "Sim",
+					"dimensionamento": "Não",
+					"horario": "20:00,23:00,01:00"
+				}
+			]
 		}, 
 		{
 			"id": "2",
@@ -20,7 +50,37 @@
 			"duracaoFilme": "02:20",
 			"classificacaoFilme": "14",
 			"generoFilme": "Ficção Científica",
-			"artista": "Emily Johnson"
+			"artista": "Emily Johnson",
+			"sessao" : [
+				{
+					"id": "1",
+					"nome": "Sala 1",
+					"dublado": "Sim",
+					"dimensionamento": "Não",
+					"horario": "12:00,13:00"
+				},
+				{
+					"id": "2",
+					"nome": "Sala 2",
+					"dublado": "Sim",
+					"dimensionamento": "Não",
+					"horario": "12:00,13:00:14:00"
+				},
+				{
+					"id": "3",
+					"nome": "Sala 3",
+					"dublado": "Sim",
+					"dimensionamento": "Não",
+					"horario": "10:00,19:00"
+				},
+				{
+					"id": "4",
+					"nome": "Sala 4",
+					"dublado": "Sim",
+					"dimensionamento": "Não",
+					"horario": "20:00,23:00,01:00"
+				}
+			]
 		}, 
 		{
 			"id": "3",
@@ -31,7 +91,37 @@
 			"duracaoFilme": "02:05",
 			"classificacaoFilme": "12",
 			"generoFilme": "Ação",
-			"artista": "Sarah Davis"
+			"artista": "Sarah Davis",
+			"sessao" : [
+				{
+					"id": "1",
+					"nome": "Sala 1",
+					"dublado": "Sim",
+					"dimensionamento": "Não",
+					"horario": "12:00,13:00,14:00"
+				},
+				{
+					"id": "1",
+					"nome": "Sala 2",
+					"dublado": "Sim",
+					"dimensionamento": "Não",
+					"horario": "12:00,13:00,14:00"
+				},
+				{
+					"id": "3",
+					"nome": "Sala 3",
+					"dublado": "Sim",
+					"dimensionamento": "Não",
+					"horario": "10:00,19:00"
+				},
+				{
+					"id": "4",
+					"nome": "Sala 4",
+					"dublado": "Sim",
+					"dimensionamento": "Não",
+					"horario": "20:00,23:00,01:00:03:00"
+				}
+			]
 		}, 
 		{
 			"id": "4",
@@ -42,7 +132,37 @@
 			"duracaoFilme": "01:50",
 			"classificacaoFilme": "14",
 			"generoFilme": "Terror",
-			"artista": "Michael Johnson"
+			"artista": "Michael Johnson",
+			"sessao" : [
+				{
+					"id": "1",
+					"nome": "Sala 1",
+					"dublado": "Sim",
+					"dimensionamento": "Não",
+					"horario": "13:00,14:00,15:00"
+				},
+				{
+					"id": "2",
+					"nome": "Sala 2",
+					"dublado": "Sim",
+					"dimensionamento": "Não",
+					"horario": "13:00,14:00,15:00"
+				},
+				{
+					"id": "3",
+					"nome": "Sala 3",
+					"dublado": "Sim",
+					"dimensionamento": "Não",
+					"horario": "10:00,19:00"
+				},
+				{
+					"id": "4",
+					"nome": "Sala 4",
+					"dublado": "Sim",
+					"dimensionamento": "Não",
+					"horario": "20:00,00:00,03:00:07:00"
+				}
+			]
 		}, 
 		{
 			"id": "5",
@@ -53,7 +173,37 @@
 			"duracaoFilme": "02:05",
 			"classificacaoFilme": "14",
 			"generoFilme": "Fantasia",
-			"artista": "Millie Bobby Brown"
+			"artista": "Millie Bobby Brown",
+			"sessao" : [
+				{
+					"id": "1",
+					"nome": "Sala 1",
+					"dublado": "Sim",
+					"dimensionamento": "Não",
+					"horario": "12:00,15:00"
+				},
+				{
+					"id": "2",
+					"nome": "Sala 2",
+					"dublado": "Sim",
+					"dimensionamento": "Não",
+					"horario": "12:00,15:00:16:00"
+				},
+				{
+					"id": "3",
+					"nome": "Sala 3",
+					"dublado": "Sim",
+					"dimensionamento": "Não",
+					"horario": "10:00,19:00"
+				},
+				{
+					"id": "4",
+					"nome": "Sala 4",
+					"dublado": "Sim",
+					"dimensionamento": "Não",
+					"horario": "00:00"
+				}
+			]
 		}
 	]
 }

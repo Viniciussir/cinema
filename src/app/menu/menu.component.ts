@@ -49,6 +49,7 @@ export class MenuComponent implements OnInit {
     sessao: SessaoFilme[] = [];
     sessaoFilme: SessaoFilme = {};
 
+    sessaoComErro:boolean = false;
 
     constructor(
       private menuService: MenuService, 
@@ -133,7 +134,38 @@ export class MenuComponent implements OnInit {
 
     abrirNovo() {
         this.filme = {};
-        this.sessaoFilme = {};
+        this.sessao = [
+            {
+                "id": "1",
+                "nome": "",
+                "dublado": "",
+                "dimensionamento": "",
+                "horario": ""
+            },
+            {
+                "id": "2",
+                "nome": "",
+                "dublado": "",
+                "dimensionamento": "",
+                "horario": ""
+            },
+            {
+                "id": "3",
+                "nome": "",
+                "dublado": "",
+                "dimensionamento": "",
+                "horario": ""
+            },
+            {
+                "id": "4",
+                "nome": "",
+                "dublado": "",
+                "dimensionamento": "",
+                "horario": ""
+            }
+        ]
+        this.valorGeneroFilme = '';
+        this.valorClassificacao = 0;
         this.submitted = false;
         this.indPodeHabilitarDialogMenu = true;
     }
@@ -151,31 +183,30 @@ export class MenuComponent implements OnInit {
         });
     }
 
-    editProduct(filme: DadosFilme) {
+    editarFilme(filme: DadosFilme, sessaoFilme: SessaoFilme) {
         this.filme = {...filme};
+        this.sessaoFilme = {...sessaoFilme};
         if(filme.tituloFilme){
-            if(filme.tituloFilme == "O Mistério da Mansão"){
-                this.menuService.getSessaoCine1().then(cine1 => this.sessao = cine1);
-            }
+            this.sessao = filme.sessao
         }
         this.preencherValoresEditarFilmes();
         this.indPodeHabilitarDialogMenu = true;
     }
 
-    deleteProduct(product: DadosFilme) {
+    deletarFilme(filme: DadosFilme) {
         this.confirmationService.confirm({
-            message: 'Tem certeza de que deseja excluir ' + product.tituloFilme + '?',
+            message: 'Tem certeza de que deseja excluir ' + filme.tituloFilme + '?',
             header: 'Confirme',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                this.filmes = this.filmes.filter(val => val.id !== product.id);
+                this.filmes = this.filmes.filter(val => val.id !== filme.id);
                 this.filme = {};
                 this.messageService.add({severity:'success', summary: 'Sucesso', detail: 'Filme Deletado', life: 3000});
             }
         });
     }
 
-    hideDialog() {
+    fecharDialog() {
         this.indPodeHabilitarDialogMenu = false;
         this.submitted = false;
     }
@@ -188,28 +219,42 @@ export class MenuComponent implements OnInit {
         return `${dia}.${mes}.${ano}`;
       }
     
-    saveProduct() {
-        this.submitted = true;
+    salvarFilme() {
+        if(!this.filme.tituloFilme || !this.filme.sinopseFilme || !this.filme.estreiaFilme || !this.filme.generoFilme ||
+            !this.filme.classificacaoFilme || !this.filme.duracaoFilme){
+            this.messageService.add({severity:'error', summary: 'Erro', detail: 'Verifique os dados informados.', life: 3000});
+         
+        } else {
+            this.submitted = true;
 
-        let dataFormatada = this.formatarData(this.filme.estreiaFilme);
-
-        this.filme.estreiaFilme = dataFormatada;
-
-        if (this.filme.tituloFilme.trim()) {
-            if (this.filme.id) {
-                this.filmes[this.findIndexById(this.filme.id)] = this.filme;                
-                this.messageService.add({severity:'success', summary: 'Sucesso', detail: 'Filme atualizado', life: 3000});
+            var pattern = /^\d{2}\.\d{2}\.\d{4}$/;
+    
+            if (pattern.test(this.filme.estreiaFilme)) {
+    
+            }else {
+                let dataFormatada = this.formatarData(this.filme.estreiaFilme);
+    
+                this.filme.estreiaFilme = dataFormatada;
             }
-            else {
-                this.filme.id = this.createId();
-                this.filmes.push(this.filme);
-                this.messageService.add({severity:'success', summary: 'Sucesso', detail: 'Filme adicionado', life: 3000});
+    
+            if (this.filme.tituloFilme.trim()) {
+                this.filme.sessao = this.sessao;
+                if (this.filme.id) {
+                    this.filmes[this.findIndexById(this.filme.id)] = this.filme;                
+                    this.messageService.add({severity:'success', summary: 'Sucesso', detail: 'Filme atualizado', life: 3000});
+                }
+                else {
+                    this.filme.id = this.createId();
+                    this.filmes.push(this.filme);
+                    this.messageService.add({severity:'success', summary: 'Sucesso', detail: 'Filme adicionado', life: 3000});
+                }
+    
+                this.filmes = [...this.filmes];
+                this.indPodeHabilitarDialogMenu = false;
+                this.filme = {};
             }
-
-            this.filmes = [...this.filmes];
-            this.indPodeHabilitarDialogMenu = false;
-            this.filme = {};
         }
+       
     }
 
     findIndexById(id: string): number {
@@ -262,7 +307,8 @@ export class MenuComponent implements OnInit {
     }
 
     onRowEditSave(sessaoFilme: SessaoFilme) {
-        if (sessaoFilme.nome > 0) {
+        if (sessaoFilme.nome && sessaoFilme.dublado && sessaoFilme.dimensionamento && sessaoFilme.horario) {
+            this.sessaoComErro = true;
             delete this.clonedSessaoFilme[sessaoFilme.id];
             this.messageService.add({
               severity: 'success',
@@ -270,6 +316,7 @@ export class MenuComponent implements OnInit {
               detail: 'Sessão Atualizada',
             });
         } else {
+            this.sessaoComErro = true;
             this.messageService.add({
               severity: 'error',
               summary: 'Erro',
@@ -280,7 +327,7 @@ export class MenuComponent implements OnInit {
 
     onRowEditCancel(sessaoFilme: SessaoFilme, index: number) {
         this.sessao[index] = this.clonedSessaoFilme[sessaoFilme.id];
-        delete this.sessao[sessaoFilme.id];
+        delete this.sessao[sessaoFilme.id-1];
     }
 
     preencherValoresEditarFilmes(){
@@ -293,29 +340,5 @@ export class MenuComponent implements OnInit {
                 'name': this.filme.generoFilme,
             }
         }
-        if(this.sessaoFilme.horario){
-            let listaHorario = this.sessaoFilme.horario.split(",")
-            let valor:any [] = [];
-            for (let i = 0; i < listaHorario.length; i++) {
-                valor.push({
-                    'code': listaHorario[i],
-                    'name': listaHorario[i]
-                });
-            }
-            this.valorHorario = valor;
-        }
     }
-
-    selecionarHorario(){
-        if(this.valorHorario){
-            let valor:any [] = [];
-            for (let i = 0; i < this.valorHorario.length; i++) {
-                valor.push(this.valorHorario[i].name);
-            }
-            this.sessaoFilme.horario = valor;
-        } else {
-            this.sessaoFilme.horario = '';
-        } 
-    }
-
 }

@@ -14,18 +14,4 @@ export class MenuService {
         .then(res => <DadosFilme[]>res.data)
         .then(data => { return data; });
     }
-
-    getSessaoCine1() {
-        return this.http.get<any>('assets/sessao.json')
-        .toPromise()
-        .then(res => <SessaoFilme[]>res.cine1)
-        .then(cine1 => { return cine1; });
-    }
-
-    getSessaoCine2() {
-        return this.http.get<any>('assets/sessao.json')
-        .toPromise()
-        .then(res => <SessaoFilme[]>res.cine2)
-        .then(cine2 => { return cine2; });
-    }
 }

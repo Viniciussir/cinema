@@ -6,13 +6,13 @@ export interface DadosFilme {
     duracaoFilme?:any;
     classificacaoFilme?:any;
     generoFilme?:any;
+    sessao?:any;
 }
 
 export interface SessaoFilme {
     id?:any;
-    tituloFilme?:any;
     nome?:any;
-    idioma?:any;
+    dublado?:any;
     dimensionamento?:any;
     horario?:any;
 }
