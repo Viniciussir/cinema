@@ -27,6 +27,9 @@ export class RegisterComponent implements OnInit {
 
   valorNumero:any = 0;
 
+  nomeCinema:any = '';
+  valorOperacao:any = '';
+
   constructor(
     private registerService: RegisterService,
     private messageService: MessageService, 
@@ -68,6 +71,9 @@ export class RegisterComponent implements OnInit {
       return false
     }
     this.messageService.add({severity:'success', summary: 'Sucesso', detail: 'O cinema ' + this.register.nome + ' será incluido em breve!', life: 3000});
+    this.nomeCinema = this.register.usuario;
+    this.valorOperacao = Operacao.REGISTER;
+    this.operacao = Operacao.MENU;
     return true
   }
 

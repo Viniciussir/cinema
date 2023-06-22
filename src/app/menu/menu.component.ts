@@ -19,6 +19,7 @@ import { Operacao } from '../shared/operacao';
 export class MenuComponent implements OnInit {
 
     @Input('nomeCinema') nomeCinema:any;
+    @Input('valorOperacao') valorOperacao:any;
 
     operacao:any = '';
 
@@ -57,9 +58,12 @@ export class MenuComponent implements OnInit {
       private confirmationService: ConfirmationService) { }
 
     ngOnInit() {
-        this.operacao = Operacao.MENU;
-        this.menuService.getFilmes().then(data => this.filmes = data);
-
+        if(this.valorOperacao == Operacao.REGISTER){
+            this.operacao = Operacao.MENU;
+        } else {
+            this.operacao = Operacao.MENU;
+            this.menuService.getFilmes().then(data => this.filmes = data);
+        }
         this.listaGeneroFilme = [
             { "code": "Ação", "name": "Ação" },
             { "code": "Comédia", "name": "Comédia" },
