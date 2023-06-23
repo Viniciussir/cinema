@@ -70,7 +70,7 @@ export class RegisterComponent implements OnInit {
       this.messageService.add({severity:'error', summary: 'Erro', detail: 'Verifique os dados informados.', life: 3000});
       return false
     }
-    this.messageService.add({severity:'success', summary: 'Sucesso', detail: 'O cinema ' + this.register.nome + ' será incluido em breve!', life: 3000});
+    this.messageService.add({severity:'success', summary: 'Sucesso', detail: 'O cinema ' + this.register.nome + ' foi registrado com sucesso!', life: 3000});
     this.nomeCinema = this.register.usuario;
     this.valorOperacao = Operacao.REGISTER;
     this.operacao = Operacao.MENU;
