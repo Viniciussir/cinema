@@ -5,7 +5,6 @@ body {
   background: #590a0a;
 }
 .container {
-  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: row;
@@ -16,18 +15,6 @@ body {
 .flex {
   display: flex;
 }
-
-.col-lg-4{
-  width: 17% !important; 
-  padding: 1rem;
-}
-
-.box-comp {
-  float: left;
-  width: 100%;
-  position: relative;
-}
-
 
 .titleCinema{
   display: flex;
